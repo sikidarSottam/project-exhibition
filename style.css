@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.main {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.main-heading {
+  font-size: 4rem;
+  color: #00e5ff;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00e5ff99;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: #cfd8dc;
+  margin-bottom: 5px;
+}
+
+.sub-tagline {
+  font-size: 1.2rem;
+  color: #90caf9;
+  margin-bottom: 20px;
+}
+
+.robot-image img {
+  width: 200px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 10px #00e5ff);
+  transition: transform 0.3s ease;
+}
+
+.robot-image img:hover {
+  transform: scale(1.05);
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  width: 80%;
+  max-width: 450px;
+  margin: 20px auto;
+  height: 60px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+  position: relative;
+}
+
+.content {
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: left;
+  flex: 1;
+  padding-left: 10px;
+}
+
+.mic-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.talk {
+  width: 60px;
+  height: 60px;
+  background: #00e5ff22;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00e5ff66;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  font-size: 24px;
+  color: #00e5ff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.talk:hover {
+  transform: scale(1.15);
+  color: #00bcd4;
+  background: #00e5ff33;
+}
+
+.talk::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 10%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease-out, opacity 0.6s ease-out;
+}
+
+.talk:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.highlight {
+  color: #00e5ff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #00e5ff88;
+}
+
+.click-hint {
+  font-size: 1rem;
+  color: #a0cfdc;
+  margin-top: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.chat-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.chat-input-box {
+  padding: 10px 15px;
+  width: 65%;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #00e5ff33;
+  color: #00e5ff;
+  border: 1px solid #00e5ff66;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s ease;
+}
+
+.send-button:hover {
+  background-color: #00e5ff55;
+  transform: scale(1.05);
+}
+
+.footer-section {
+  background-color: rgba(0, 229, 255, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  color: #ffffff;
+  margin-top: 40px;
+}
+
+.footer-roles {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.role-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #00e5ff;
+  margin-bottom: 5px;
+}
+
+.name, .email {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #cfd8dc;
+}
