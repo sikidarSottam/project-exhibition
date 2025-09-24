@@ -18,9 +18,6 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 function speak(text) {
     const text_speak = new SpeechSynthesisUtterance(text);
 
-    // Try to find a higher quality voice
-    // The voice names can vary between browsers and operating systems.
-    // You can log `voices` to the console to see available options.
     // We'll prioritize high-quality male voices.
     const desiredVoice = voices.find(voice => voice.name === 'Google US English Male') || 
                          voices.find(voice => voice.name.includes('Male') && voice.lang.startsWith('en-')) ||
