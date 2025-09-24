@@ -3,7 +3,7 @@ const content = document.querySelector('.content');
 const chatInput = document.querySelector('.chat-input-box');
 const sendButton = document.querySelector('.send-button');
 
-// --- IMPROVEMENT: Store voices and set up a function to load them ---
+
 let voices = [];
 
 function populateVoiceList() {
@@ -15,23 +15,24 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
-// --- IMPROVEMENT: Updated speak function to use a better voice ---
 function speak(text) {
     const text_speak = new SpeechSynthesisUtterance(text);
 
     // Try to find a higher quality voice
-    // Note: The voice names can vary between browsers and operating systems.
-    // You can log `voices` to the console to see available options on your machine.
-    const desiredVoice = voices.find(voice => voice.name === 'Google UK English Female') || voices.find(voice => voice.lang === 'en-US');
+    // The voice names can vary between browsers and operating systems.
+    // You can log `voices` to the console to see available options.
+    // We'll prioritize high-quality male voices.
+    const desiredVoice = voices.find(voice => voice.name === 'Google US English Male') || 
+                         voices.find(voice => voice.name.includes('Male') && voice.lang.startsWith('en-')) ||
+                         voices.find(voice => voice.lang === 'en-US'); // Fallback
 
     if (desiredVoice) {
         text_speak.voice = desiredVoice;
     }
 
-    // Fine-tune for a more natural sound
-    text_speak.rate = 1;
-    text_speak.volume = 1;
-    text_speak.pitch = 1.1; // A slightly higher pitch can sound clearer
+    text_speak.volume = 1; // Max volume
+    text_speak.rate = 1;   // Normal rate
+    text_speak.pitch = 1;  // A more natural pitch for a male voice
 
     window.speechSynthesis.speak(text_speak);
 }
