@@ -155,13 +155,13 @@ function takeCommand(message) {
             hour: "numeric",
             minute: "numeric"
         });
-        speak("The time is " + time);
+        speak("The time is " + time || "time");
     } else if (message.includes('date')) {
         const date = new Date().toLocaleString(undefined, {
             month: "short",
             day: "numeric"
         });
-        speak("Today's date is " + date);
+        speak("Today's date is " + date || "date");
     } else if (message.includes('calculator')) {
         window.open('Calculator:///', "_blank");
         speak("Opening Calculator");
